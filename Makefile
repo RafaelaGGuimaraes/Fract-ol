@@ -10,7 +10,9 @@ SRCDIR = srcs
 SRCS = $(SRCDIR)/main.c \
        $(SRCDIR)/close_window.c \
        $(SRCDIR)/key_handler.c \
-       $(SRCDIR)/draw_image.c
+       $(SRCDIR)/draw_image.c \
+	   $(SRCDIR)/draw_mandelbrot.c \
+	   $(SRCDIR)/put_pixel.c \
 
 OBJS = $(SRCS:.c=.o)
 
