@@ -13,6 +13,8 @@ SRCS = $(SRCDIR)/main.c \
        $(SRCDIR)/draw_image.c \
 	   $(SRCDIR)/draw_mandelbrot.c \
 	   $(SRCDIR)/put_pixel.c \
+   	   $(SRCDIR)/mouse_handler.c \
+
 
 OBJS = $(SRCS:.c=.o)
 

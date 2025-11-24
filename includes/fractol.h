@@ -31,6 +31,7 @@ typedef struct s_fractal
 int		close_window(t_vars *vars);
 int		key_handler(int keycode, t_vars *vars);
 void	put_pixel(t_vars *vars, int x, int y, int color);
+int	mouse_handler(int button, int x, int y, void *param);
 
 // Funções do fractal
 void	draw_mandelbrot(t_vars *vars, t_fractal *fractal);
