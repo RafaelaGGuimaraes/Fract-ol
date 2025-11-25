@@ -26,7 +26,7 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 INCLUDES = -I includes -I $(MLX_DIR)
 
 # ===============================
-#          REGRAS
+#          REGRAS teste
 # ===============================
 
 all: $(MLX) $(NAME)
