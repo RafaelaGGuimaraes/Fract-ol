@@ -1,39 +1,83 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "mlx.h"
 # include <stdlib.h>
+# include <unistd.h>
+# include <math.h>
+# include "mlx.h"
 
 # define WIDTH 800
 # define HEIGHT 600
+# define MAX_ITER 1000
 
-typedef struct s_vars
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_PLUS 61
+# define KEY_MINUS 45
+# define KEY_UP     65362
+# define KEY_DOWN   65364
+# define KEY_LEFT   65361
+# define KEY_RIGHT  65363
+
+# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_DOWN 5
+
+typedef enum e_set
+{
+	MANDELBROT,
+	JULIA
+}	t_set;
+
+typedef struct s_fractol
 {
 	void	*mlx;
 	void	*win;
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
+	char	*buf;
+	int		bpp;
+	int		line;
 	int		endian;
-}	t_vars;
+	double	min_r;
+	double	max_r;
+	double	min_i;
+	double	max_i;
+	double	j_cr;
+	double	j_ci;
+	int		max_iter;
+	int		*palette;
+	int		set;
+}	t_fractol;
 
-typedef struct s_fractal
-{
-	double x_min;
-	double x_max;
-	double y_min;
-	double y_max;
-	int max_iter;
-}	t_fractal;
+/* main */
+int		main(int ac, char **av);
 
-// Funções gerais
-int		close_window(t_vars *vars);
-int		key_handler(int keycode, t_vars *vars);
-void	put_pixel(t_vars *vars, int x, int y, int color);
-int	mouse_handler(int button, int x, int y, void *param);
+/* help */
+void	print_help(void);
 
-// Funções do fractal
-void	draw_mandelbrot(t_vars *vars, t_fractal *fractal);
+/* init */
+void	init_fractol(t_fractol *f, int ac, char **av);
+void	init_image(t_fractol *f);
+
+/* render */
+void	render(t_fractol *f);
+
+/* fractals */
+int		mandelbrot(double cr, double ci, int max_iter);
+int		julia(t_fractol *f, double zr, double zi, int max_iter);
+
+/* color */
+void	build_palette(t_fractol *f);
+int		interpolate_color(int c1, int c2, double t);
+
+/* hooks */
+int		key_hook(int keycode, t_fractol *f);
+int		mouse_hook(int button, int x, int y, t_fractol *f);
+
+/* utils */
+double	ft_atof(const char *s);
+void	put_pixel(t_fractol *f, int x, int y, int color);
 
 #endif

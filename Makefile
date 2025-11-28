@@ -7,17 +7,18 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCDIR = srcs
-SRCS = $(SRCDIR)/main.c \
-       $(SRCDIR)/close_window.c \
-       $(SRCDIR)/key_handler.c \
-       $(SRCDIR)/draw_image.c \
-	   $(SRCDIR)/draw_mandelbrot.c \
-	   $(SRCDIR)/put_pixel.c \
-   	   $(SRCDIR)/mouse_handler.c \
-
+SRCS = $(SRCDIR)/color.c \
+       $(SRCDIR)/fractals.c \
+       $(SRCDIR)/hooks.c \
+       $(SRCDIR)/init.c \
+       $(SRCDIR)/main.c \
+       $(SRCDIR)/print_help.c \
+       $(SRCDIR)/render.c \
+       $(SRCDIR)/utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
+# MLX
 MLX_DIR = minilibx-linux
 MLX_REPO = https://github.com/42Paris/minilibx-linux.git
 MLX = $(MLX_DIR)/libmlx.a
@@ -26,12 +27,11 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 INCLUDES = -I includes -I $(MLX_DIR)
 
 # ===============================
-#          REGRAS teste
+#            REGRAS
 # ===============================
 
 all: $(MLX) $(NAME)
 
-# Compila o projeto
 $(NAME): $(OBJS) $(MLX)
 	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(MLX_FLAGS) -o $(NAME)
 
@@ -39,7 +39,10 @@ $(NAME): $(OBJS) $(MLX)
 srcs/%.o: srcs/%.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-# Baixa a MLX se não existir
+# ===============================
+#       MLX (clone + build)
+# ===============================
+
 $(MLX):
 	@if [ ! -d $(MLX_DIR) ]; then \
 		git clone $(MLX_REPO) $(MLX_DIR); \
@@ -48,17 +51,18 @@ $(MLX):
 		$(MAKE) -C $(MLX_DIR); \
 	fi
 
-# Limpa objetos do projeto e da MLX
+# ===============================
+#           LIMPEZA
+# ===============================
+
 clean:
 	rm -f $(OBJS)
 	@$(MAKE) -C $(MLX_DIR) clean || true
 
-# Limpa tudo (executável + objetos + lib da MLX)
 fclean: clean
 	rm -f $(NAME)
 	rm -rf $(MLX_DIR)
 
-# Recompila tudo do zero
 re: fclean all
 
 .PHONY: all clean fclean re

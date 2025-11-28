@@ -1,34 +1,28 @@
-#include "fractol.h"
+#include "../includes/fractol.h"
 
-int	main(void)
+static int	close_window(t_fractol *f)
 {
-	t_vars		vars;
-	t_fractal	fractal;
-	void		*params[2];
+	free(f->palette);
+	mlx_destroy_image(f->mlx, f->img);
+	mlx_destroy_window(f->mlx, f->win);
+	exit(0);
+	return (0);
+}
 
-	// Inicialização MLX
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, WIDTH, HEIGHT, "fract-ol");
+int	main(int ac, char **av)
+{
+	t_fractol	f;
 
-	// Inicialização do fractal Mandelbrot
-	fractal.x_min = -2.0;
-	fractal.x_max = 1.0;
-	fractal.y_min = -1.2;
-	fractal.y_max = 1.2;
-	fractal.max_iter = 100;
-
-	// Guardar ponteiros para passar no hook
-	params[0] = &vars;
-	params[1] = &fractal;
-
-	// Desenhar pela primeira vez
-	draw_mandelbrot(&vars, &fractal);
-
-	// Hooks
-	mlx_hook(vars.win, 17, 0, close_window, &vars);
-	mlx_key_hook(vars.win, key_handler, &vars);
-	mlx_mouse_hook(vars.win, mouse_handler, params);
-
-	mlx_loop(vars.mlx);
+	if (ac != 2 && ac != 4)
+	{
+		print_help();
+		return (1);
+	}
+	init_fractol(&f, ac, av);
+	render(&f);
+	mlx_key_hook(f.win, key_hook, &f);
+	mlx_mouse_hook(f.win, mouse_hook, &f);
+	mlx_hook(f.win, 17, 0, close_window, &f);
+	mlx_loop(f.mlx);
 	return (0);
 }
