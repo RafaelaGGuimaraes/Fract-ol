@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-g <rgomes-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafagg <rafagg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:32:38 by rgomes-g          #+#    #+#             */
-/*   Updated: 2025/12/01 12:36:03 by rgomes-g         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:34:13 by rafagg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ static void	compute_pixel(t_fractol *f, int x, int y)
 	pi = f->max_i - y * f->pixel_h;
 	if (f->set == MANDELBROT)
 		iter = mandelbrot(pr, pi, f->max_iter);
-	else
+	else if (f->set == JULIA)
 		iter = julia(f, pr, pi, f->max_iter);
+	else
+		iter = tricorn(pr, pi, f->max_iter);
 	put_pixel(f, x, y, f->palette[iter]);
 }
 

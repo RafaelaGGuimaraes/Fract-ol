@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-g <rgomes-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafagg <rafagg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:32:52 by rgomes-g          #+#    #+#             */
-/*   Updated: 2025/12/01 12:32:53 by rgomes-g         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:31:59 by rafagg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	init_fractol(t_fractol *f, int ac, char **av)
 	{
 		if (av[1][0] == 'J' || av[1][0] == 'j')
 			f->set = JULIA;
+		else if (av[1][0] == 'T' || av[1][0] == 't')
+			f->set = TRICORN;
 		if (f->set == JULIA && ac >= 4)
 		{
 			f->j_cr = ft_atof(av[2]);

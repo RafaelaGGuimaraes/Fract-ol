@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_help.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-g <rgomes-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafagg <rafagg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:32:43 by rgomes-g          #+#    #+#             */
-/*   Updated: 2025/12/01 12:32:44 by rgomes-g         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:33:19 by rafagg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ void	print_help(void)
 	ft_putendl_fd("        FRACT-OL — HELP MENU        ", 1);
 	ft_putendl_fd("====================================", 1);
 	ft_putendl_fd("Uso:", 1);
-	ft_putendl_fd("  ./fractol mandelbrot", 1);
-	ft_putendl_fd("  ./fractol julia <real> <imag>", 1);
+	ft_putendl_fd("  ./fractol mandelbrot/m/M", 1);
+	ft_putendl_fd("  ./fractol julia/j/J <real> <imag>", 1);
+	ft_putendl_fd("  ./fractol tricorn/t/T", 1);
 	ft_putendl_fd("", 1);
 	ft_putendl_fd("Exemplos:", 1);
 	ft_putendl_fd("  ./fractol mandelbrot", 1);
 	ft_putendl_fd("  ./fractol julia -0.8 0.156", 1);
+	ft_putendl_fd("  ./fractol tricorn", 1);
 	ft_putendl_fd("", 1);
 	ft_putendl_fd("Controles:", 1);
-	ft_putendl_fd("  Scroll     → Zoom", 1);
-	ft_putendl_fd("  WASD       → Mover", 1);
-	ft_putendl_fd("  ESC        → Sair", 1);
+	ft_putendl_fd("  Scroll            → Zoom", 1);
+	ft_putendl_fd("  WASD / Setas      → Mover", 1);
+	ft_putendl_fd("  ESC               → Sair", 1);
 	ft_putendl_fd("====================================", 1);
 }

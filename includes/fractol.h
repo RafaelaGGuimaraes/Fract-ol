@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-g <rgomes-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafagg <rafagg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:33:14 by rgomes-g          #+#    #+#             */
-/*   Updated: 2025/12/01 12:39:26 by rgomes-g         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:36:02 by rafagg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
@@ -31,16 +32,17 @@
 # define KEY_DOWN   65364
 # define KEY_LEFT   65361
 # define KEY_RIGHT  65363
-# define KEY_PLUS 61
-# define KEY_MINUS 45
+# define KEY_PLUS   61
+# define KEY_MINUS  45
 
-# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_UP   4
 # define MOUSE_SCROLL_DOWN 5
 
 typedef enum e_set
 {
 	MANDELBROT,
-	JULIA
+	JULIA,
+	TRICORN
 }	t_set;
 
 typedef struct s_fractol
@@ -81,6 +83,7 @@ void	render(t_fractol *f);
 /* fractals */
 int		mandelbrot(double cr, double ci, int max_iter);
 int		julia(t_fractol *f, double zr, double zi, int max_iter);
+int		tricorn(double cr, double ci, int max_iter);
 
 /* color */
 void	build_palette(t_fractol *f);
