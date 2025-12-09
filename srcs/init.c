@@ -6,7 +6,7 @@
 /*   By: rafagg <rafagg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:32:52 by rgomes-g          #+#    #+#             */
-/*   Updated: 2025/12/02 14:31:59 by rafagg           ###   ########.fr       */
+/*   Updated: 2025/12/09 14:29:25 by rafagg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_image(t_fractol *f)
 void	init_fractol(t_fractol *f, int ac, char **av)
 {
 	f->mlx = mlx_init();
-	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "fractol_minimal");
+	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "fractol");
 	f->max_iter = MAX_ITER;
 	f->j_cr = -0.7;
 	f->j_ci = 0.27015;
