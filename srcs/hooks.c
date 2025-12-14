@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-g <rgomes-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafagg <rafagg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:33:00 by rgomes-g          #+#    #+#             */
-/*   Updated: 2025/12/01 12:33:01 by rgomes-g         ###   ########.fr       */
+/*   Updated: 2025/12/14 15:09:30 by rafagg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,6 @@ int	mouse_hook(int button, int x, int y, t_fractol *f)
 	return (0);
 }
 
-static void	close_fractol(t_fractol *f)
-{
-	free(f->palette);
-	mlx_destroy_image(f->mlx, f->img);
-	mlx_destroy_window(f->mlx, f->win);
-	exit(0);
-}
-
 static void	move_fractol(t_fractol *f, int key)
 {
 	double	dx;
@@ -87,7 +79,7 @@ static void	move_fractol(t_fractol *f, int key)
 int	key_hook(int keycode, t_fractol *f)
 {
 	if (keycode == KEY_ESC)
-		close_fractol(f);
+		close_window(f);
 	else
 		move_fractol(f, keycode);
 	render(f);

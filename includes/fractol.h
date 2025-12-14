@@ -6,7 +6,7 @@
 /*   By: rafagg <rafagg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:33:14 by rgomes-g          #+#    #+#             */
-/*   Updated: 2025/12/02 14:36:02 by rafagg           ###   ########.fr       */
+/*   Updated: 2025/12/14 15:02:20 by rafagg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int		mouse_hook(int button, int x, int y, t_fractol *f);
 /* utils */
 double	ft_atof(const char *s);
 void	put_pixel(t_fractol *f, int x, int y, int color);
+int		close_window(t_fractol *f);
 
 #endif

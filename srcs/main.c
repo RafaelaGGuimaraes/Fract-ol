@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-g <rgomes-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafagg <rafagg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 12:32:47 by rgomes-g          #+#    #+#             */
-/*   Updated: 2025/12/01 12:32:48 by rgomes-g         ###   ########.fr       */
+/*   Updated: 2025/12/14 15:51:49 by rafagg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static int	close_window(t_fractol *f)
+int	close_window(t_fractol *f)
 {
 	free(f->palette);
 	mlx_destroy_image(f->mlx, f->img);
